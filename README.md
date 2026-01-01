@@ -17,26 +17,9 @@ scheduler/
 ├── MesosScheduler.java           # Mesos调度器实现
 ├── MesosAllocator.java           # Mesos资源分配器
 ├── Offer.java                    # 资源提供类
-├── OmegaScheduler.java           # Omega调度器实现
-└── README.md                     # 本文件
-```
-
-### simulator/ - 模拟器包
-包含所有模拟器相关的实现：
+└── OmegaScheduler.java           # Omega调度器实现
 
 ```
-simulator/
-├── Simulator.java                # 离散事件模拟器基类
-├── ClusterSimulator.java         # 集群模拟器基类
-├── MesosSimulator.java          # Mesos模拟器
-├── OmegaSimulator.java          # Omega模拟器
-└── core/                         # 模拟器核心工具类
-    ├── Job.java                  # 作业类
-    ├── CellState.java            # 集群状态类
-    ├── ClaimDelta.java           # 资源分配变更类
-    └── Workload.java             # 工作负载类
-```
-
 ## 三个调度器实现
 
 ### 1. MonolithicScheduler（单体调度器）
