@@ -51,6 +51,35 @@ scheduler/
   4. 如果发生冲突，回滚并重试
   5. 如果作业未完全调度，重新入队
 
+
+### simulator/ - 模拟器包
+包含所有模拟器相关的实现：
+
+```
+simulator/
+├── ClusterSimulator.java               # 单体模拟器
+├── MesosSimulator.java             #Mesos模拟器
+├── OmegaSimulator.java       # Omega模拟器
+├── Simulator.java           # 模拟器基类
+├── core/           
+    ├── CellState.java  #集群状态
+    ├── ClaimDelta.java #修改集群状态
+    ├── Job.java                  # Job实现
+    └── Workload.java           # Workload生成
+
+```
+## 模拟器实现
+
+### 1. CellState和Claimdata
+模拟机器集群的工作状态、机器数、cpu数、资源占有情况和释放策略，供模拟器访问和修改。
+
+### 2. Job和Workload
+作为轻量级模拟器，生成供调度器调度的workload和组成workload的job。
+
+### 3. Simulator
+调用对应调度器的调度策略，并与cell交互。同时，按照策略处理资源冲突等问题。
+其中，CellState、Workload中的部分参数可以进行修改，在初始化时应用到模拟器上。
+
 ## 使用示例
 
 ```java
@@ -104,3 +133,6 @@ ClusterSimulator simulator = new ClusterSimulator(
 // 运行模拟
 simulator.run(86400.0, null);  // 运行1天
 ```
+
+
+
